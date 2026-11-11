@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Prato Cheio - Bife de casca de banana</title>
+  <link rel="icon" href="./images/v170_310.png" type="image/png">
+
+  <!-- Bootstrap 5 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Fontes do projeto -->
+  <link href="https://fonts.googleapis.com/css?family=Londrina+Solid:300,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Mada&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Funnel+Sans:300&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Lilita+One&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Encode+Sans+Expanded&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Material+Icons+Round&display=swap" rel="stylesheet">
+
+  <!-- Estilos do projeto (carregado depois do Bootstrap) -->
+  <link href="./css/design.css" rel="stylesheet">
+</head>
+<body>
+
+  <!-- ===================== MENU (fixo: acompanha a rolagem) ===================== -->
+  <header class="sticky-top pc-header" id="topo">
+    <nav class="navbar navbar-expand-xl pc-navbar">
+      <div class="container">
+
+        <a class="navbar-brand d-flex align-items-center gap-2" href="../index.html">
+          <img src="./images/v170_310.png" alt="" width="64" height="64">
+          <span class="pc-brand-text">Prato Cheio</span>
+        </a>
+
+        <!-- Ícone de login (leva para a conta) + botão do menu no celular -->
+        <div class="d-flex align-items-center gap-2 ms-auto ms-xl-3 order-xl-last">
+          <a class="pc-login" href="conta.html" title="Entrar / Minha conta"
+             aria-label="Entrar ou acessar minha conta">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor"
+                 aria-hidden="true" focusable="false">
+              <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0"/>
+              <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1"/>
+            </svg>
+          </a>
+
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                  data-bs-target="#menuPrincipal" aria-controls="menuPrincipal"
+                  aria-expanded="false" aria-label="Abrir menu">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+        </div>
+
+        <div class="collapse navbar-collapse" id="menuPrincipal">
+          <!-- Registrar e Conta só aparecem no menu da tela Início -->
+          <ul class="navbar-nav ms-xl-auto me-xl-4 mb-3 mb-xl-0 gap-xl-3">
+            <li class="nav-item"><a class="nav-link" href="../index.html">Início</a></li>
+
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle active" href="receitas.html" role="button"
+                 data-bs-toggle="dropdown" aria-expanded="false">Receitas</a>
+              <ul class="dropdown-menu pc-dropdown">
+                <li><a class="dropdown-item" href="criar-receita.html">Criar receita</a></li>
+                <li><a class="dropdown-item" href="receitas.html">Ver receitas</a></li>
+                <li><a class="dropdown-item" href="receitas-favoritas.html">Receitas favoritas</a></li>
+              </ul>
+            </li>
+
+            <li class="nav-item"><a class="nav-link" href="ajuda.html">Ajuda</a></li>
+          </ul>
+
+          <form class="pc-search" role="search" action="receitas.html" method="get">
+            <input class="form-control" type="search" name="busca"
+                   placeholder="Buscar receitas" aria-label="Buscar receitas">
+            <button class="pc-search-btn" type="submit" aria-label="Buscar">
+              <span class="material-icons-round" aria-hidden="true">search</span>
+            </button>
+          </form>
+        </div>
+
+      </div>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- ===================== BANNER ===================== -->
+    <section class="pc-hero" aria-label="Banner">
+      <img src="./images/v170_300.png" alt="Pessoa cozinhando, com legumes e verduras sobre a mesa"
+           class="pc-hero-img">
+      <p class="pc-hero-title">RECEITA</p>
+    </section>
+
+    <div class="container pc-sections">
+
+      <article class="pc-card pc-receita" data-id="bife-de-casca-de-banana">
+
+        <!-- Botão voltar: TROCAR o href pelo arquivo que o grupo definir -->
+        <a href="../tempo_preparo/tempo_de_preparo.html" class="btn pc-btn-claro pc-voltar">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor"
+               aria-hidden="true" focusable="false">
+            <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8"/>
+          </svg>
+          Voltar
+        </a>
+
+        <h1 class="pc-receita-titulo">Bife de casca de banana</h1>
+
+        <!-- Foto do prato: salve o arquivo em images/ e troque o src abaixo.
+             A foto aparece inteira, na proporção original (não estica e não corta). -->
+        <figure class="pc-foto-fig">
+          <img class="pc-foto" alt="Foto do prato: Bife de casca de banana"
+               src="./images/bife_casca_banana">
+          <figcaption>Imagem ilustrativa do prato.</figcaption>
+        </figure>
+
+        <!-- Tempo, porções e custo (os "--" são para o grupo preencher) -->
+        <ul class="pc-receita-meta">
+          <li><img src="./images/v170_346.png" alt=""><span>25 min</span></li>
+          <li><img src="./images/v170_342.png" alt=""><span>6 porções</span></li>
+          <li><img src="./images/v170_347.png" alt=""><span>R$ 6,25</span></li>
+        </ul>
+
+        <section aria-labelledby="titulo-ingredientes">
+          <h2 id="titulo-ingredientes">Ingredientes</h2>
+          <ul class="pc-lista">
+            <li>Cascas de seis bananas maduras</li>
+            <li>3 dentes de alho amassados</li>
+            <li>2 ovos</li>
+            <li>1 xícara de farinha de trigo</li>
+            <li>1 xícara de farinha de rosca</li>
+            <li>Sal a gosto</li>
+          </ul>
+        </section>
+
+        <section aria-labelledby="titulo-preparo">
+          <h2 id="titulo-preparo">Modo de preparo</h2>
+          <ol class="pc-passos">
+            <li><span>Higienize as cascas da banana com água corrente e corte as pontas.</span></li>
+            <li><span>Separe as cascas na forma de bifes e tempere com alho e sal em uma vasilha.</span></li>
+            <li><span>Bata os ovos até que fiquem espumosos e disponha em um prato.</span></li>
+            <li><span>Coloque em outro prato um pouco de farinha de trigo e em outro prato a farinha de rosca.</span></li>
+            <li><span>Passe as cascas de banana já temperadas como se fosse bife a milanesa, primeiro na farinha de trigo, depois ovo, depois na farinha de rosca para finalizar.</span></li>
+            <li><span>Frite as cascas em óleo vegetal, escorra bem e sirva ainda quente.</span></li>
+          </ol>
+        </section>
+
+        <p class="pc-receita-fim">Agora é só servir! Aproveite cada garfada dessa refeição deliciosa, nutritiva e cheia de carinho. Bom apetite!</p>
+
+        <div class="pc-receita-acoes">
+          <span class="pc-autor">Autor: a definir</span>
+          <button type="button" class="pc-acao" id="btnCompartilhar">Compartilhar</button>
+          <button type="button" class="pc-acao pc-fav" id="btnFavorita"
+                  aria-pressed="false" aria-label="Adicionar às favoritas">&#9734;</button>
+        </div>
+        <p class="pc-aviso" id="avisoReceita" role="status"></p>
+
+      </article>
+
+    </div>
+  </main>
+
+  <!-- ===================== RODAPÉ ===================== -->
+  <footer class="pc-footer">
+    <div class="container">
+      <div class="row g-4 align-items-center">
+        <div class="col-md-4">
+          <p class="mb-0">Lorem ipsum cras massa pretium id diam et eget aliquet.</p>
+        </div>
+        <div class="col-md-4">
+          <p class="mb-0">Lorem ipsum cras massa pretium id diam et eget aliquet.</p>
+        </div>
+        <div class="col-6 col-md-2">
+          <p class="mb-0">Lorem ipsum cras</p>
+        </div>
+        <div class="col-6 col-md-2 text-end">
+          <a href="../index.html" aria-label="Prato Cheio - voltar ao início">
+            <img src="./images/v170_306.png" alt="Logotipo Prato Cheio: segurança alimentar e receitas equilibradas"
+                 class="pc-footer-logo" loading="lazy">
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script>
+    (function () {
+      // ----- menu fixo: ganha sombra quando a página é rolada -----
+      var topo = document.getElementById("topo");
+      function marcarRolagem() { topo.classList.toggle("pc-rolou", window.scrollY > 8); }
+      window.addEventListener("scroll", marcarRolagem, { passive: true });
+      marcarRolagem();
+
+      // ----- aviso curto (some sozinho) -----
+      var aviso = document.getElementById("avisoReceita");
+      var temporizador;
+      function dizer(texto) {
+        aviso.textContent = texto;
+        clearTimeout(temporizador);
+        temporizador = setTimeout(function () { aviso.textContent = ""; }, 3000);
+      }
+
+      // ----- favoritar (guarda no navegador; a tela de favoritas pode ler "pratoCheioFavoritas") -----
+      var id = document.querySelector(".pc-receita").getAttribute("data-id");
+      var btnFav = document.getElementById("btnFavorita");
+      var CHAVE = "pratoCheioFavoritas";
+
+      function lerFavoritas() {
+        try {
+          var lista = JSON.parse(localStorage.getItem(CHAVE));
+          return Array.isArray(lista) ? lista : [];
+        } catch (e) { return []; }
+      }
+      function salvarFavoritas(lista) {
+        try { localStorage.setItem(CHAVE, JSON.stringify(lista)); } catch (e) {}
+      }
+      function mostrarFavorita(fav) {
+        btnFav.textContent = fav ? "★" : "☆";
+        btnFav.setAttribute("aria-pressed", fav ? "true" : "false");
+        btnFav.setAttribute("aria-label", fav ? "Remover das favoritas" : "Adicionar às favoritas");
+      }
+
+      mostrarFavorita(lerFavoritas().indexOf(id) !== -1);
+
+      btnFav.addEventListener("click", function () {
+        var lista = lerFavoritas();
+        var pos = lista.indexOf(id);
+        if (pos === -1) { lista.push(id); } else { lista.splice(pos, 1); }
+        salvarFavoritas(lista);
+        mostrarFavorita(pos === -1);
+        dizer(pos === -1 ? "Receita adicionada às favoritas." : "Receita removida das favoritas.");
+      });
+
+      // ----- compartilhar -----
+      document.getElementById("btnCompartilhar").addEventListener("click", function () {
+        var dados = { title: document.title, url: window.location.href };
+        if (navigator.share) {
+          navigator.share(dados).catch(function () {});
+        } else if (navigator.clipboard && window.isSecureContext) {
+          navigator.clipboard.writeText(dados.url).then(
+            function () { dizer("Link copiado!"); },
+            function () { dizer("Copie o endereço na barra do navegador."); }
+          );
+        } else {
+          dizer("Copie o endereço na barra do navegador.");
+        }
+      });
+    })();
+  </script>
+</body>
+</html>

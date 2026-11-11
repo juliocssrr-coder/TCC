@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Prato Cheio - Tempo de preparo</title>
+  <link rel="icon" href="./images/v123_374.png" type="image/png">
+
+  <!-- Bootstrap 5 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Fontes do projeto -->
+  <link href="https://fonts.googleapis.com/css?family=Londrina+Solid&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Mada&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Lilita+One&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Encode+Sans+Expanded&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Funnel+Sans&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Material+Icons+Round&display=swap" rel="stylesheet">
+
+  <!-- Estilos do projeto (carregado depois do Bootstrap) -->
+  <link href="./css/estilo.css" rel="stylesheet">
+</head>
+<body>
+<!-- ===================== MENU ===================== --><header class="sticky-top pc-header" id="topo"><nav class="navbar navbar-expand-xl pc-navbar">
+<div class="container"><a class="navbar-brand d-flex align-items-center gap-2" href="../index.html"> <img src="./images/v123_374.png" alt="" width="64" height="64" /> <span class="pc-brand-text">Prato Cheio</span> </a> <!-- Ícone de login (sempre visível, inclusive no celular) + botão do menu -->
+<div class="d-flex align-items-center gap-2 ms-auto ms-xl-3 order-xl-last"><a class="pc-login" href="conta.html" title="Entrar / Minha conta" aria-label="Entrar ou acessar minha conta"> <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 16 16" fill="currentColor" aria-hidden="true" focusable="false"> <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0"></path> <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1"></path> </svg> </a> <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuPrincipal" aria-controls="menuPrincipal" aria-expanded="false" aria-label="Abrir menu"> <span class="navbar-toggler-icon"></span> </button></div>
+<div class="collapse navbar-collapse" id="menuPrincipal">
+<ul class="navbar-nav ms-xl-auto me-xl-4 mb-3 mb-xl-0 gap-xl-3">
+<li class="nav-item"><a class="nav-link" href="../index.html">Início</a></li>
+<!-- Receitas com submenu (é a seção em que esta tela está) -->
+<li class="nav-item dropdown"><a class="nav-link dropdown-toggle active" href="receitas.html" role="button" data-bs-toggle="dropdown" aria-expanded="false">Receitas</a>
+<ul class="dropdown-menu pc-dropdown">
+<li><a class="dropdown-item" href="criar-receita.html">Criar receita</a></li>
+<li><a class="dropdown-item" href="receitas.html">Ver receitas</a></li>
+<li><a class="dropdown-item" href="receitas-favoritas.html">Receitas favoritas</a></li>
+</ul>
+</li>
+<li class="nav-item"><a class="nav-link" href="registrar.html">Registrar</a></li>
+<!-- "Conta" saiu do menu nesta tela: o acesso é pelo ícone de login -->
+<li class="nav-item"><a class="nav-link" href="ajuda.html">Ajuda</a></li>
+</ul>
+<!-- Busca: envia o termo para receitas.html?busca=... --><form class="pc-search" role="search" action="receitas.html" method="get"><input class="form-control" type="search" name="busca" placeholder="Buscar receitas" aria-label="Buscar receitas" /> <button class="pc-search-btn" type="submit" aria-label="Buscar"> <span class="material-icons-round" aria-hidden="true">search</span> </button></form></div>
+</div>
+</nav></header><main><!-- ===================== BANNER ===================== -->
+<section class="pc-hero" aria-label="Banner"><img src="./images/v123_357.png" alt="Pessoa cortando legumes e vegetais sobre uma tábua" class="pc-hero-img" />
+<h1 class="pc-hero-title">RECEITAS</h1>
+</section>
+<div class="container pc-sections"><!-- ===================== FILTRO: TEMPO DE PREPARO ===================== -->
+<section class="pc-section" aria-labelledby="titulo-filtro">
+<div class="pc-section-head pc-section-head-sm">
+<h2 id="titulo-filtro">Filtre suas opções</h2>
+</div>
+<div class="pc-card pc-filtro">
+<div class="pc-filtro-titulo"><img src="./images/v123_395.png" alt="" width="64" height="64" />
+<h3>Tempo de preparo</h3>
+</div>
+<p class="pc-filtro-desc" id="tempoDesc">Escolha o tempo de preparo desejado.<br />As receitas encontradas serão apenas com o mesmo tempo de preparo selecionado.</p>
+<!-- Valor escolhido -->
+<div class="text-center mb-4"><span class="pc-tempo-pilula" id="tempoPilula" aria-live="polite">5-10 minutos</span></div>
+<!-- Seletor de tempo (as opções vêm da lista FAIXAS, no script lá embaixo) -->
+<div class="pc-tempo-seletor"><label for="tempoRange" class="visually-hidden">Tempo de preparo</label> <input type="range" class="form-range pc-range" id="tempoRange" min="0" max="4" step="1" value="0" aria-describedby="tempoDesc" />
+<div class="pc-tempo-marcas" aria-hidden="true"><!-- as marcas são criadas pelo script (veja FAIXAS) --></div>
+</div>
+<div class="text-center mt-4"><button type="button" class="btn pc-pronto" id="btnPronto">Pronto</button></div>
+</div>
+</section>
+<!-- ===================== RESULTADOS ===================== -->
+<section class="pc-section" aria-label="Receitas" id="resultados">
+<div class="pc-status" role="status" aria-live="polite"><span id="statusFiltro">Mostrando todas as receitas (9).</span> <button type="button" class="pc-limpar d-none" id="btnLimpar">Limpar filtro</button></div>
+<!-- Quando nenhuma receita tem o tempo escolhido -->
+<div class="pc-vazio d-none" id="semResultados">Ainda não temos receitas com esse tempo de preparo. Tente escolher outro tempo.</div>
+<!--
+          ==================== TEMPO DE CADA RECEITA ====================
+          O tempo (em minutos) fica NA PRIMEIRA LINHA de cada card, no <div class="col-lg-6">:
+
+              data-min="45"  data-max="60"      -> receita de 45 a 60 min
+
+          - Receita MAIOR que 60 min: aumente o data-max.  Ex.: data-min="45" data-max="80"
+          - Receita que "passa de 60" e você não sabe o máximo: apague o data-max.  Ex.: data-min="50"
+          - Receita com tempo exato (ex.: 30 min): use o mesmo número nos dois.
+          O texto "45-60 min" que aparece no card é escrito sozinho a partir desses números
+          (não precisa editar o texto). As faixas do seletor ficam no <script> lá embaixo (FAIXAS).
+        -->
+<div class="row g-4" id="listaReceitas">
+<div class="col-lg-6" data-min="65" data-max="65">
+<article class="pc-card pc-recipe"><img src="./images/bolo_leite" alt="Foto do prato: Bolo de leite" class="pc-recipe-img" loading="lazy" />
+<h3>Bolo de leite</h3>
+<p class="pc-recipe-desc">Fácil, rápido e com baixo custo.</p>
+<div class="pc-recipe-foot">
+<ul class="pc-recipe-meta">
+<li title="Tempo de preparo"><img src="./images/v123_394.png" alt="Tempo de preparo" /><span class="pc-tempo-txt">65 min</span></li>
+<li title="Baixo custo"><img src="./images/v123_396.png" alt="Baixo custo" /></li>
+<li title="Porções"><img src="./images/v123_397.png" alt="Porções" /></li>
+</ul>
+<a href="../passo/bolo_leite.html" class="btn pc-btn-claro">Ver Receita</a></div>
+</article>
+</div>
+<div class="col-lg-6" data-min="35" data-max="35">
+<article class="pc-card pc-recipe"><img src="./images/arroz_feijao" alt="Foto do prato: Arroz com feijão" class="pc-recipe-img" loading="lazy" />
+<h3>Arroz com feijão</h3>
+<p class="pc-recipe-desc">Fácil, rápido e com baixo custo.</p>
+<div class="pc-recipe-foot">
+<ul class="pc-recipe-meta">
+<li title="Tempo de preparo"><img src="./images/v123_394.png" alt="Tempo de preparo" /><span class="pc-tempo-txt">35 min</span></li>
+<li title="Baixo custo"><img src="./images/v123_396.png" alt="Baixo custo" /></li>
+<li title="Porções"><img src="./images/v123_397.png" alt="Porções" /></li>
+</ul>
+<a href="../passo/arroz_feijao.html" class="btn pc-btn-claro">Ver Receita</a></div>
+</article>
+</div>
+<div class="col-lg-6" data-min="35" data-max="35">
+<article class="pc-card pc-recipe"><img src="./images/bolinho_feijao" alt="Foto do prato: Bolinho de feijão" class="pc-recipe-img" loading="lazy" />
+<h3>Bolinho de feijão</h3>
+<p class="pc-recipe-desc">Fácil, rápido e com baixo custo.</p>
+<div class="pc-recipe-foot">
+<ul class="pc-recipe-meta">
+<li title="Tempo de preparo"><img src="./images/v123_394.png" alt="Tempo de preparo" /><span class="pc-tempo-txt">35 min</span></li>
+<li title="Baixo custo"><img src="./images/v123_396.png" alt="Baixo custo" /></li>
+<li title="Porções"><img src="./images/v123_397.png" alt="Porções" /></li>
+</ul>
+<a href="../passo/bolinho_feijao.html" class="btn pc-btn-claro">Ver Receita</a></div>
+</article>
+</div>
+<div class="col-lg-6" data-min="20" data-max="20">
+<article class="pc-card pc-recipe"><img src="./images/tutu_feijao" alt="Foto do prato: Tutu de feijão" class="pc-recipe-img" loading="lazy" />
+<h3>Tutu de feijão</h3>
+<p class="pc-recipe-desc">Fácil, rápido e com baixo custo.</p>
+<div class="pc-recipe-foot">
+<ul class="pc-recipe-meta">
+<li title="Tempo de preparo"><img src="./images/v123_394.png" alt="Tempo de preparo" /><span class="pc-tempo-txt">20 min</span></li>
+<li title="Baixo custo"><img src="./images/v123_396.png" alt="Baixo custo" /></li>
+<li title="Porções"><img src="./images/v123_397.png" alt="Porções" /></li>
+</ul>
+<a href="../passo/tutu_feijao.html" class="btn pc-btn-claro">Ver Receita</a></div>
+</article>
+</div>
+<div class="col-lg-6" data-min="60" data-max="75">
+<article class="pc-card pc-recipe"><img src="./images/torta_sobra_arroz" alt="Foto do prato: Torta de legumes com massa de arroz" class="pc-recipe-img" loading="lazy" />
+<h3>Torta de legumes com massa de arroz</h3>
+<p class="pc-recipe-desc">Fácil, rápido e com baixo custo.</p>
+<div class="pc-recipe-foot">
+<ul class="pc-recipe-meta">
+<li title="Tempo de preparo"><img src="./images/v123_394.png" alt="Tempo de preparo" /><span class="pc-tempo-txt">75 min</span></li>
+<li title="Baixo custo"><img src="./images/v123_396.png" alt="Baixo custo" /></li>
+<li title="Porções"><img src="./images/v123_397.png" alt="Porções" /></li>
+</ul>
+<a href="receita.html?id=ensopado-peixe" class="btn pc-btn-claro">Ver Receita</a></div>
+</article>
+</div>
+<div class="col-lg-6" data-min="20" data-max="20">
+<article class="pc-card pc-recipe"><img src="./images/arroz_frito.jpg" alt="Foto do prato: Arroz frito" class="pc-recipe-img" loading="lazy" />
+<h3>Arroz frito</h3>
+<p class="pc-recipe-desc">Fácil, rápido e com baixo custo.</p>
+<div class="pc-recipe-foot">
+<ul class="pc-recipe-meta">
+<li title="Tempo de preparo"><img src="./images/v123_394.png" alt="Tempo de preparo" /><span class="pc-tempo-txt">20 min</span></li>
+<li title="Baixo custo"><img src="./images/v123_396.png" alt="Baixo custo" /></li>
+<li title="Porções"><img src="./images/v123_397.png" alt="Porções" /></li>
+</ul>
+<a href="../passo/arroz_frito.html" class="btn pc-btn-claro">Ver Receita</a></div>
+</article>
+</div>
+<div class="col-lg-6" data-min="30" data-max="30">
+<article class="pc-card pc-recipe"><img src="./images/arroz_casca_abobora" alt="Foto do prato: Arroz de casca de abóbora" class="pc-recipe-img" loading="lazy" />
+<h3>Arroz de casca de abóbora</h3>
+<p class="pc-recipe-desc">Fácil, rápido e com baixo custo.</p>
+<div class="pc-recipe-foot">
+<ul class="pc-recipe-meta">
+<li title="Tempo de preparo"><img src="./images/v123_394.png" alt="Tempo de preparo" /><span class="pc-tempo-txt">30 min</span></li>
+<li title="Baixo custo"><img src="./images/v123_396.png" alt="Baixo custo" /></li>
+<li title="Porções"><img src="./images/v123_397.png" alt="Porções" /></li>
+</ul>
+<a href="../passo/arroz_de_casca_de_abobora.html" class="btn pc-btn-claro">Ver Receita</a></div>
+</article>
+</div>
+<div class="col-lg-6" data-min="35" data-max="35">
+<article class="pc-card pc-recipe"><img src="./images/doce_casca_banana.avif" alt="Foto do prato: Doce de casca de banana" class="pc-recipe-img" loading="lazy" />
+<h3>Doce de casca de banana</h3>
+<p class="pc-recipe-desc">Fácil, rápido e com baixo custo.</p>
+<div class="pc-recipe-foot">
+<ul class="pc-recipe-meta">
+<li title="Tempo de preparo"><img src="./images/v123_394.png" alt="Tempo de preparo" /><span class="pc-tempo-txt">35 min</span></li>
+<li title="Baixo custo"><img src="./images/v123_396.png" alt="Baixo custo" /></li>
+<li title="Porções"><img src="./images/v123_397.png" alt="Porções" /></li>
+</ul>
+<a href="../passo/doce_de_casca_de_banana.html" class="btn pc-btn-claro">Ver Receita</a></div>
+</article>
+</div>
+<div class="col-lg-6" data-min="25" data-max="25">
+<article class="pc-card pc-recipe"><img src="./images/bife_casca_banana" alt="Foto do prato: Bife de casca de banana" class="pc-recipe-img" loading="lazy" />
+<h3>Bife de casca de banana</h3>
+<p class="pc-recipe-desc">Fácil, rápido e com baixo custo.</p>
+<div class="pc-recipe-foot">
+<ul class="pc-recipe-meta">
+<li title="Tempo de preparo"><img src="./images/v123_394.png" alt="Tempo de preparo" /><span class="pc-tempo-txt">25 min</span></li>
+<li title="Baixo custo"><img src="./images/v123_396.png" alt="Baixo custo" /></li>
+<li title="Porções"><img src="./images/v123_397.png" alt="Porções" /></li>
+</ul>
+<a href="../passo/bife_de_casca_de_banana.html" class="btn pc-btn-claro">Ver Receita</a></div>
+</article>
+</div>
+</div>
+</section>
+</div>
+</main><!-- ===================== RODAPÉ ===================== --><footer class="pc-footer">
+<div class="container">
+<div class="row g-4 align-items-center">
+<div class="col-md-4">
+<p class="mb-0">Lorem ipsum cras massa pretium id diam et eget aliquet.</p>
+</div>
+<div class="col-md-4">
+<p class="mb-0">Lorem ipsum cras massa pretium id diam et eget aliquet.</p>
+</div>
+<div class="col-6 col-md-2">
+<p class="mb-0">Lorem ipsum cras</p>
+</div>
+<div class="col-6 col-md-2 text-end"><a href="index.html" aria-label="Prato Cheio - voltar ao início"> <img src="./images/v123_363.png" alt="Logotipo Prato Cheio: segurança alimentar e receitas equilibradas" class="pc-footer-logo" loading="lazy" /> </a></div>
+</div>
+</div>
+</footer>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<!-- ===================== FILTRO POR TEMPO ===================== -->
+<script>
+(function () {
+  /* ==============================================================
+     ONDE FICAM OS TEMPOS (em minutos)
+     --------------------------------------------------------------
+     1) FAIXAS (logo abaixo) = as opções do seletor "Tempo de preparo".
+        - "de" e "ate" são os minutos da faixa.
+        - A última faixa usa  ate: Infinity  (= "mais de 60 minutos").
+        - Para mudar/criar uma faixa, edite só esta lista: o seletor e
+          as marcas se montam sozinhos. Ex.: para separar "60 a 90" e
+          "mais de 90", troque a última linha por duas:
+              { de: 60, ate: 90 },
+              { de: 90, ate: Infinity }
+
+     2) O tempo de CADA RECEITA fica no HTML, na primeira linha do card:
+              data-min="45"  data-max="60"
+        (receita com mais de 60 min: aumente o data-max, ex. data-max="80")
+
+     Regra do filtro: a receita aparece na faixa escolhida quando o tempo
+     dela se sobrepõe à faixa. Ex.: receita de 20 a 50 min aparece nas
+     faixas 20-30, 30-45 e 45-60. Receita de 20 a 30 NÃO aparece em 30-45.
+     ============================================================== */
+  var FAIXAS = [
+    { de: 5,  ate: 10 },
+    { de: 10, ate: 20 },
+    { de: 20, ate: 30 },
+    { de: 30, ate: 45 },
+    { de: 45, ate: 60 },
+    { de: 60, ate: Infinity }   // mais de 60 minutos
+  ];
+  /* ===================== daqui para baixo não precisa mexer ===================== */
+
+  var seletor    = document.querySelector(".pc-tempo-seletor");
+  var slider     = document.getElementById("tempoRange");
+  var marcasBox  = document.querySelector(".pc-tempo-marcas");
+  var pilula     = document.getElementById("tempoPilula");
+  var btnPronto  = document.getElementById("btnPronto");
+  var btnLimpar  = document.getElementById("btnLimpar");
+  var status     = document.getElementById("statusFiltro");
+  var vazio      = document.getElementById("semResultados");
+  var resultados = document.getElementById("resultados");
+  var receitas   = document.querySelectorAll("#listaReceitas > [data-min]");
+  var marcas     = [];
+
+  // ---- textos ----
+  function rotuloCurto(f) { return f.ate === Infinity ? "+" + f.de : f.de + "-" + f.ate; }
+  function rotuloLongo(f) { return f.ate === Infinity ? "mais de " + f.de + " minutos" : f.de + "-" + f.ate + " minutos"; }
+  function textoTempo(mn, mx) {
+    if (mx === Infinity) return mn + "+ min";
+    return mn === mx ? mn + " min" : mn + "-" + mx + " min";
+  }
+
+  // ---- lê o tempo de cada receita (data-min / data-max) ----
+  var lista = [];
+  receitas.forEach(function (el) {
+    var mn = parseInt(el.getAttribute("data-min"), 10);
+    var bruto = el.getAttribute("data-max");
+    var mx = (bruto === null || bruto === "") ? Infinity : parseInt(bruto, 10);
+    var nome = (el.querySelector("h3") || {}).textContent || "(sem nome)";
+    if (isNaN(mn) || isNaN(mx) || mx < mn) {
+      console.warn("Receita \"" + nome + "\": confira data-min / data-max (min=" + mn + ", max=" + bruto + ").");
+      lista.push({ el: el, ok: false });
+      return;
+    }
+    var txt = el.querySelector(".pc-tempo-txt");
+    if (txt) txt.textContent = textoTempo(mn, mx);          // o texto do card sai dos números
+    lista.push({ el: el, ok: true, mn: mn, mx: mx });
+  });
+
+  // ---- a receita cabe na faixa? (sobreposição; faixa vai de "de" até "ate", sem incluir "ate") ----
+  function cabe(r, f) {
+    if (r.mn === r.mx) return r.mn >= f.de && r.mn < f.ate;   // tempo exato
+    return r.mn < f.ate && r.mx > f.de;
+  }
+
+  // ---- monta o seletor a partir de FAIXAS ----
+  slider.min = 0;
+  slider.max = FAIXAS.length - 1;
+  slider.step = 1;
+  seletor.style.setProperty("--pc-passos", FAIXAS.length - 1);
+  FAIXAS.forEach(function (f, i) {
+    var b = document.createElement("button");
+    b.type = "button";
+    b.className = "pc-marca";
+    b.style.setProperty("--i", i);
+    b.setAttribute("data-valor", i);
+    b.textContent = rotuloCurto(f);
+    b.addEventListener("click", function () { slider.value = i; atualizarSelecao(); });
+    marcasBox.appendChild(b);
+    marcas.push(b);
+  });
+
+  function atualizarSelecao() {
+    var f = FAIXAS[slider.value];
+    pilula.textContent = rotuloLongo(f);
+    slider.setAttribute("aria-valuetext", rotuloLongo(f));
+    marcas.forEach(function (m, i) { m.classList.toggle("ativa", i === Number(slider.value)); });
+  }
+
+  // ---- mostra só as receitas da faixa (ou todas, se faixa for null) ----
+  function filtrar(f) {
+    var total = 0;
+    lista.forEach(function (r) {
+      var mostrar = !f || !r.ok || cabe(r, f);
+      r.el.classList.toggle("d-none", !mostrar);
+      if (mostrar) total++;
+    });
+    vazio.classList.toggle("d-none", total !== 0);
+    btnLimpar.classList.toggle("d-none", !f);
+
+    if (!f) {
+      status.textContent = "Mostrando todas as receitas (" + total + ").";
+    } else if (total === 0) {
+      status.textContent = "Nenhuma receita de " + rotuloLongo(f) + ".";
+    } else {
+      status.textContent = "Mostrando " + total + (total === 1 ? " receita" : " receitas") + " de " + rotuloLongo(f) + ".";
+    }
+  }
+
+  slider.addEventListener("input", atualizarSelecao);
+  btnPronto.addEventListener("click", function () {
+    filtrar(FAIXAS[slider.value]);
+    var reduzir = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    resultados.scrollIntoView({ behavior: reduzir ? "auto" : "smooth", block: "start" });
+  });
+  btnLimpar.addEventListener("click", function () { filtrar(null); });
+
+  atualizarSelecao();
+  filtrar(null);
+
+  // ---- menu fixo: ganha sombra quando a página é rolada ----
+  var topo = document.getElementById("topo");
+  function marcarRolagem() { topo.classList.toggle("pc-rolou", window.scrollY > 8); }
+  window.addEventListener("scroll", marcarRolagem, { passive: true });
+  marcarRolagem();
+})();
+</script>
+</body>
+</html>

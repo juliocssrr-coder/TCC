@@ -301,3 +301,7 @@ body {
   height: auto;
   clip-path: inset(1.5% 0 0 0); /* mesma linha escura do arquivo original */
 }
+
+p {
+   text-align: justify;
+}

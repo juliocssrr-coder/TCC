@@ -1,0 +1,640 @@
+/* =====================================================
+   Prato Cheio - Início
+   O posicionamento é feito pelo Bootstrap (grid, navbar, dropdown).
+   Este arquivo define só as cores, fontes e o acabamento visual.
+   ===================================================== */
+
+:root {
+  --pc-fundo: #EAF7E6;        /* fundo da página */
+  --pc-card-bg: #FAFFF1;      /* fundo dos cards */
+  --pc-marrom: #5B360B;       /* bordas dos cards e rodapé */
+  --pc-marrom-menu: #854D0D;  /* links do menu */
+  --pc-verde-menu: #59964C;   /* link ativo do menu */
+  --pc-verde-marca: #2E7D32;  /* nome da marca */
+  --pc-verde-titulo: #114201; /* títulos das seções */
+  --pc-verde-botao: #3E6F34;  /* botões */
+  --pc-verde-busca: #2D7816;  /* botão da busca */
+
+  --pc-raio: 2rem;
+
+  --bs-body-font-family: Mada, system-ui, sans-serif;
+  --bs-body-bg: var(--pc-fundo);
+}
+
+body {
+  background-color: var(--pc-fundo);
+  font-family: Mada, system-ui, sans-serif;
+  font-size: 1rem;
+}
+
+/* ---------- ícones (Material Icons Round) ---------- */
+.material-icons-round {
+  font-family: "Material Icons Round";
+  font-weight: normal;
+  font-style: normal;
+  font-size: 1.5rem;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  font-feature-settings: "liga";
+  -webkit-font-smoothing: antialiased;
+  vertical-align: middle;
+}
+
+/* =====================================================
+   MENU
+   ===================================================== */
+.pc-navbar {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+
+/* O arquivo do logo tem 1px escuro na primeira linha (resíduo da exportação):
+   o clip-path recorta essa linha. O ícone tem margem em volta, então é
+   exibido maior e com margem negativa para não aumentar a altura do menu. */
+.navbar-brand img {
+  width: 4rem;
+  height: 4rem;
+  margin: -0.5rem 0 -0.5rem -0.4rem;
+  clip-path: inset(1.5% 0 0 0);
+}
+
+.pc-brand-text {
+  font-family: "Londrina Solid", sans-serif;
+  font-size: clamp(1.7rem, 2.4vw, 2.3rem);
+  line-height: 1;
+  color: var(--pc-verde-marca);
+}
+
+.pc-navbar .nav-link {
+  font-family: "Londrina Solid", sans-serif;
+  font-size: clamp(1.2rem, 1.5vw, 1.5rem);
+  color: var(--pc-marrom-menu);
+}
+
+.pc-navbar .nav-link:hover,
+.pc-navbar .nav-link:focus,
+.pc-navbar .nav-link.active,
+.pc-navbar .nav-link.show {
+  color: var(--pc-verde-menu);
+}
+
+.pc-navbar .navbar-toggler {
+  border-color: var(--pc-marrom);
+}
+
+.pc-navbar .navbar-toggler:focus {
+  box-shadow: 0 0 0 0.2rem rgba(62, 111, 52, 0.35);
+}
+
+.pc-header {
+  background-color: var(--pc-fundo);
+}
+
+/* ---------- busca ---------- */
+.pc-search {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+@media (min-width: 1200px) {
+  .pc-search {
+    width: 18rem;
+  }
+}
+
+.pc-search .form-control {
+  background-color: var(--pc-card-bg);
+  border: 1px solid var(--pc-marrom);
+  border-radius: 50rem;
+  height: 2.5rem;
+  padding-left: 1.1rem;
+  padding-right: 3rem;
+}
+
+.pc-search .form-control:focus {
+  border-color: var(--pc-verde-busca);
+  box-shadow: 0 0 0 0.2rem rgba(45, 120, 22, 0.25);
+}
+
+.pc-search-btn {
+  position: absolute;
+  right: 0;
+  width: 2.9rem;
+  height: 2.9rem;
+  border: 0;
+  border-radius: 50%;
+  background-color: var(--pc-verde-busca);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden; /* se a fonte de ícones não carregar, o texto não vaza do círculo */
+}
+
+.pc-search-btn:hover {
+  background-color: #1F5A0F;
+}
+
+.pc-search-btn:focus-visible {
+  outline: 3px solid var(--pc-verde-marca);
+  outline-offset: 2px;
+}
+
+.pc-search-btn .material-icons-round {
+  font-size: 1.6rem;
+}
+
+/* =====================================================
+   BANNER
+   ===================================================== */
+.pc-hero {
+  position: relative;
+  height: clamp(150px, 19vw, 280px);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pc-hero-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.pc-hero-title {
+  position: relative;
+  margin: 0;
+  padding: 0 1rem;
+  text-align: center;
+  font-family: "Lilita One", sans-serif;
+  font-weight: normal;
+  font-size: clamp(2.2rem, 6vw, 4.5rem);
+  line-height: 1;
+  color: #fff;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.55);
+}
+
+/* =====================================================
+   SEÇÕES / CARDS
+   ===================================================== */
+.pc-sections {
+  padding-top: 2rem;
+  padding-bottom: 3rem;
+}
+
+.pc-section + .pc-section {
+  margin-top: 3.5rem;
+}
+
+.pc-section-head {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  padding-left: 0.5rem;
+}
+
+.pc-section-head img {
+  width: 4rem;
+  height: 4rem;
+  object-fit: contain;
+}
+
+.pc-section-head h2 {
+  margin: 0;
+  font-family: "Londrina Solid", sans-serif;
+  font-weight: normal;
+  font-size: clamp(2.2rem, 4.4vw, 4rem);
+  line-height: 1;
+  color: var(--pc-verde-titulo);
+}
+
+.pc-card {
+  background-color: var(--pc-card-bg);
+  border: 1px solid var(--pc-marrom);
+  border-radius: var(--pc-raio);
+  padding: clamp(1rem, 2.5vw, 2rem);
+}
+
+.pc-card-img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+  border-radius: var(--pc-raio);
+}
+
+.pc-card-text {
+  font-size: clamp(1.05rem, 1.7vw, 1.6rem);
+  line-height: 1.4;
+  color: #000;
+  margin-bottom: 1.5rem;
+}
+
+/* ---------- botão ---------- */
+.pc-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  background-color: var(--pc-verde-botao);
+  color: #fff;
+  font-family: "Encode Sans Expanded", sans-serif;
+  font-size: clamp(1rem, 1.6vw, 1.5rem);
+  border: 0;
+  border-radius: 50rem;
+  padding: 0.7rem 1.75rem;
+}
+
+.pc-btn:hover,
+.pc-btn:focus {
+  background-color: #2D5226;
+  color: #fff;
+}
+
+.pc-btn:focus-visible {
+  box-shadow: 0 0 0 0.25rem rgba(62, 111, 52, 0.4);
+}
+
+/* =====================================================
+   RODAPÉ
+   ===================================================== */
+.pc-footer {
+  background-color: var(--pc-marrom);
+  color: #fff;
+  padding: 2rem 0;
+  font-size: clamp(0.9rem, 1.2vw, 1.1rem);
+}
+
+.pc-footer-logo {
+  width: clamp(90px, 10vw, 130px);
+  height: auto;
+  clip-path: inset(1.5% 0 0 0); /* mesma linha escura do arquivo original */
+}
+
+/* =====================================================
+   TELA: TEMPO DE PREPARO
+   (tudo acima é igual ao da tela Início)
+   ===================================================== */
+
+/* ---------- ícone de login no menu ---------- */
+.pc-login {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.6rem;
+  height: 2.6rem;
+  border: 1px solid var(--pc-marrom);
+  border-radius: 50%;
+  background-color: var(--pc-card-bg);
+  color: var(--pc-verde-busca);
+  transition: background-color 0.15s, color 0.15s;
+}
+
+.pc-login svg {
+  width: 1.6rem;
+  height: 1.6rem;
+}
+
+.pc-login:hover,
+.pc-login:focus-visible {
+  background-color: var(--pc-verde-busca);
+  color: #fff;
+}
+
+.pc-login:focus-visible {
+  outline: 3px solid var(--pc-verde-marca);
+  outline-offset: 2px;
+}
+
+/* No celular, marca mais compacta para o ícone de login e o botão do menu
+   caberem na mesma linha que o logo */
+@media (max-width: 575.98px) {
+  .navbar-brand {
+    margin-right: 0;
+  }
+
+  .navbar-brand img {
+    width: 3.75rem;
+    height: 3.75rem;
+    margin: -0.5rem 0 -0.5rem -0.25rem;
+  }
+
+  .pc-brand-text {
+    font-size: 1.75rem;
+  }
+}
+
+@media (max-width: 359.98px) {
+  .pc-brand-text {
+    font-size: 1.35rem;
+  }
+}
+
+/* ---------- títulos desta tela (um pouco menores que no Início) ---------- */
+.pc-section-head-sm h2 {
+  font-size: clamp(1.6rem, 2.6vw, 2.2rem);
+}
+
+/* ---------- painel do filtro ---------- */
+.pc-filtro {
+  padding: clamp(1rem, 2.5vw, 2rem);
+}
+
+.pc-filtro-titulo {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 0.75rem;
+}
+
+.pc-filtro-titulo img {
+  width: 3rem;
+  height: 3rem;
+  object-fit: contain;
+}
+
+.pc-filtro-titulo h3 {
+  margin: 0;
+  font-family: "Londrina Solid", sans-serif;
+  font-weight: normal;
+  font-size: clamp(1.6rem, 2.6vw, 2.2rem);
+  line-height: 1;
+  color: var(--pc-verde-titulo);
+}
+
+.pc-filtro-desc {
+  font-family: "Funnel Sans", Mada, sans-serif;
+  font-weight: 300;
+  font-size: clamp(0.9rem, 1.3vw, 1.15rem);
+  color: var(--pc-verde-menu);
+  margin-bottom: 1.25rem;
+}
+
+/* pílula com o tempo escolhido */
+.pc-tempo-pilula {
+  display: inline-block;
+  min-width: 10rem;
+  padding: 0.45rem 1.5rem;
+  border-radius: 50rem;
+  background-color: rgba(62, 111, 52, 0.84);
+  color: #D4E6CE;
+  font-family: "Encode Sans Expanded", sans-serif;
+  font-size: clamp(1rem, 1.6vw, 1.4rem);
+  text-align: center;
+}
+
+/* ---------- seletor (slider) ---------- */
+.pc-tempo-seletor {
+  --pc-thumb: 1.75rem;
+  --pc-passos: 5; /* número de faixas menos 1 (o script atualiza sozinho) */
+  max-width: 36rem;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.pc-range {
+  height: var(--pc-thumb);
+  background: transparent;
+}
+
+.pc-range::-webkit-slider-runnable-track {
+  height: 0.5rem;
+  border-radius: 50rem;
+  background-color: var(--pc-verde-botao);
+}
+
+.pc-range::-moz-range-track {
+  height: 0.5rem;
+  border-radius: 50rem;
+  background-color: var(--pc-verde-botao);
+}
+
+.pc-range::-webkit-slider-thumb {
+  width: var(--pc-thumb);
+  height: var(--pc-thumb);
+  margin-top: calc((0.5rem - var(--pc-thumb)) / 2);
+  border: 2px solid var(--pc-verde-titulo);
+  border-radius: 50%;
+  background-color: #D4E6CE;
+}
+
+.pc-range::-moz-range-thumb {
+  width: var(--pc-thumb);
+  height: var(--pc-thumb);
+  border: 2px solid var(--pc-verde-titulo);
+  border-radius: 50%;
+  background-color: #D4E6CE;
+}
+
+.pc-range:focus {
+  box-shadow: none;
+}
+
+.pc-range:focus-visible::-webkit-slider-thumb {
+  box-shadow: 0 0 0 0.25rem rgba(62, 111, 52, 0.4);
+}
+
+.pc-range:focus-visible::-moz-range-thumb {
+  box-shadow: 0 0 0 0.25rem rgba(62, 111, 52, 0.4);
+}
+
+/* marcas de tempo abaixo do seletor: alinhadas com o centro do botão */
+.pc-tempo-marcas {
+  position: relative;
+  height: 2.2rem;
+  margin-top: 0.25rem;
+}
+
+.pc-marca {
+  position: absolute;
+  top: 0;
+  left: calc(var(--pc-thumb) / 2 + (100% - var(--pc-thumb)) * var(--i) / var(--pc-passos));
+  transform: translateX(-50%);
+  border: 0;
+  background: transparent;
+  padding: 0.2rem 0.4rem;
+  font-family: "Encode Sans Expanded", sans-serif;
+  font-size: clamp(0.75rem, 1.2vw, 0.95rem);
+  color: var(--pc-verde-marca);
+  white-space: nowrap;
+}
+
+.pc-marca.ativa {
+  font-weight: bold;
+  color: var(--pc-verde-titulo);
+}
+
+/* botão Pronto */
+.pc-pronto {
+  background-color: #D4E6CE;
+  color: var(--pc-verde-titulo);
+  border: 1px solid var(--pc-verde-titulo);
+  border-radius: 50rem;
+  padding: 0.1rem 2.75rem;
+  font-family: "Londrina Solid", sans-serif;
+  font-size: clamp(1.5rem, 2.4vw, 2rem);
+  line-height: 1.4;
+}
+
+.pc-pronto:hover,
+.pc-pronto:focus {
+  background-color: var(--pc-verde-botao);
+  border-color: var(--pc-verde-botao);
+  color: #fff;
+}
+
+/* ---------- resultados ---------- */
+.pc-status {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem 1rem;
+  margin-bottom: 1.25rem;
+  padding-left: 0.5rem;
+  font-size: clamp(0.9rem, 1.2vw, 1.05rem);
+  color: var(--pc-verde-titulo);
+}
+
+.pc-limpar {
+  border: 1px solid var(--pc-verde-botao);
+  border-radius: 50rem;
+  background: transparent;
+  color: var(--pc-verde-botao);
+  padding: 0.15rem 1rem;
+  font-size: 0.95rem;
+}
+
+.pc-limpar:hover,
+.pc-limpar:focus-visible {
+  background-color: var(--pc-verde-botao);
+  color: #fff;
+}
+
+.pc-vazio {
+  padding: 2rem 1.5rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  border: 1px dashed var(--pc-marrom);
+  border-radius: var(--pc-raio);
+  background-color: var(--pc-card-bg);
+  font-size: clamp(0.95rem, 1.4vw, 1.15rem);
+  color: var(--pc-verde-titulo);
+}
+
+/* ---------- card de receita ---------- */
+.pc-recipe {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.pc-recipe-img {
+  display: block;
+  width: 100%;
+  height: auto;
+  /* caixa 3:2 igual para todos os cards. A foto nunca é esticada: ela é
+     ampliada até preencher a caixa e o que sobra nas bordas é cortado. */
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+  object-position: center;
+  border-radius: var(--pc-raio);
+}
+
+.pc-recipe h3 {
+  margin: 0.75rem 0 0.2rem;
+  font-family: "Londrina Solid", sans-serif;
+  font-weight: normal;
+  font-size: clamp(1.5rem, 2.3vw, 1.9rem);
+  line-height: 1.05;
+  color: var(--pc-verde-titulo);
+}
+
+.pc-recipe-desc {
+  margin-bottom: 0.75rem;
+  font-size: clamp(0.95rem, 1.3vw, 1.15rem);
+  color: var(--pc-verde-marca);
+}
+
+.pc-recipe-foot {
+  margin-top: auto;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.pc-recipe-meta {
+  display: flex;
+  align-items: center;
+  gap: 1.1rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.pc-recipe-meta li {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.9rem;
+  color: var(--pc-verde-titulo);
+}
+
+.pc-recipe-meta img {
+  height: 1.8rem;
+  width: auto;
+}
+
+.pc-btn-claro {
+  background-color: #D4E6CE;
+  color: var(--pc-marrom);
+  border: 1px solid var(--pc-marrom);
+  border-radius: 50rem;
+  padding: 0.4rem 1.4rem;
+  font-family: "Encode Sans Expanded", sans-serif;
+  font-size: clamp(0.9rem, 1.2vw, 1.1rem);
+}
+
+.pc-btn-claro:hover,
+.pc-btn-claro:focus {
+  background-color: var(--pc-verde-botao);
+  border-color: var(--pc-verde-botao);
+  color: #fff;
+}
+
+/* =====================================================
+   MENU FIXO: acompanha a rolagem da página
+   (o <header> tem a classe "sticky-top"; aqui só o acabamento)
+   ===================================================== */
+.pc-header {
+  background-color: var(--pc-fundo);
+  transition: box-shadow 0.2s ease;
+}
+
+.pc-header.pc-rolou {
+  box-shadow: 0 3px 12px rgba(17, 66, 1, 0.18);
+}
+
+/* telas estreitas: as 6 marcas de tempo precisam de menos espaço entre elas */
+@media (max-width: 399.98px) {
+  .pc-tempo-seletor {
+    padding: 0 0.25rem;
+  }
+
+  .pc-marca {
+    font-size: 0.72rem;
+    padding: 0.2rem 0.1rem;
+  }
+}

@@ -53,9 +53,6 @@ body {
   padding-bottom: 1rem;
 }
 
-/* O arquivo do logo tem 1px escuro na primeira linha (resíduo da exportação):
-   o clip-path recorta essa linha. O ícone tem margem em volta, então é
-   exibido maior e com margem negativa para não aumentar a altura do menu. */
 .navbar-brand img {
   width: 5rem;
   height: 5rem;
@@ -155,7 +152,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  overflow: hidden; /* se a fonte de ícones não carregar, o texto não vaza do círculo */
+  overflow: hidden; 
 }
 
 .pc-search-btn:hover {
@@ -299,7 +296,7 @@ body {
 .pc-footer-logo {
   width: clamp(110px, 14vw, 180px);
   height: auto;
-  clip-path: inset(1.5% 0 0 0); /* mesma linha escura do arquivo original */
+  clip-path: inset(1.5% 0 0 0); 
 }
 
 p {

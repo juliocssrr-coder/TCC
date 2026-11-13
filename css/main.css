@@ -13,10 +13,7 @@
   --pc-verde-marca: #2E7D32;  /* nome da marca */
   --pc-verde-titulo: #114201; /* títulos das seções */
   --pc-verde-botao: #3E6F34;  /* botões */
-  --pc-verde-busca: #2D7816;  /* botão da busca */
-
-  --pc-raio: 1.5rem;          /* antes: 2rem */
-
+  --pc-raio: 1.5rem;         
   --bs-body-font-family: Mada, system-ui, sans-serif;
   --bs-body-bg: var(--pc-fundo);
 }
@@ -24,7 +21,7 @@
 body {
   background-color: var(--pc-fundo);
   font-family: Mada, system-ui, sans-serif;
-  font-size: 1rem;
+  font-size: 1.0625rem;
 }
 
 /* ---------- ícones (Material Icons Round) ---------- */
@@ -53,6 +50,9 @@ body {
   padding-bottom: 0.5rem;
 }
 
+/* O arquivo do logo tem 1px escuro na primeira linha (resíduo da exportação):
+   o clip-path recorta essa linha. O ícone tem margem em volta, então é
+   exibido maior e com margem negativa para não aumentar a altura do menu. */
 .navbar-brand img {
   width: 3.5rem;
   height: 3.5rem;
@@ -69,7 +69,7 @@ body {
 
 .pc-navbar .nav-link {
   font-family: "Londrina Solid", sans-serif;
-  font-size: clamp(1.15rem, 1.5vw, 1.5rem);
+  font-size: clamp(1.25rem, 1.6vw, 1.6rem);
   color: var(--pc-marrom-menu);
 }
 
@@ -100,7 +100,7 @@ body {
 
 .pc-dropdown .dropdown-item {
   font-family: "Londrina Solid", sans-serif;
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   color: var(--pc-marrom-menu);
   border-radius: 0.5rem;
   padding: 0.3rem 0.85rem;
@@ -151,7 +151,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  overflow: hidden;
+  overflow: hidden; 
 }
 
 .pc-search-btn:hover {
@@ -172,7 +172,8 @@ body {
    ===================================================== */
 .pc-hero {
   position: relative;
-  height: clamp(170px, 24vw, 340px);
+  width: 100%;
+  aspect-ratio: 5 / 1;       
   overflow: hidden;
   display: flex;
   align-items: center;
@@ -194,7 +195,7 @@ body {
   text-align: center;
   font-family: "Lilita One", sans-serif;
   font-weight: normal;
-  font-size: clamp(2.2rem, 6.5vw, 5.5rem);
+  font-size: clamp(1.6rem, 5vw, 4.5rem);
   line-height: 1;
   color: #fff;
   text-shadow: 0 2px 12px rgba(0, 0, 0, 0.55);
@@ -252,10 +253,10 @@ body {
 }
 
 .pc-card-text {
-  font-size: clamp(1.5rem, 1.7vw, 1.4rem);
-  line-height: 1.8;
+  font-size: clamp(1.1rem, 1.5vw, 1.35rem);
+  line-height: 1.45;
   color: #000;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
 }
 
 /* ---------- botão ---------- */
@@ -266,7 +267,7 @@ body {
   background-color: var(--pc-verde-botao);
   color: #fff;
   font-family: "Encode Sans Expanded", sans-serif;
-  font-size: clamp(0.95rem, 1.2vw, 1.15rem);
+  font-size: clamp(1.05rem, 1.35vw, 1.3rem);
   border: 0;
   border-radius: 50rem;
   padding: 0.55rem 1.4rem;
@@ -289,7 +290,7 @@ body {
   background-color: var(--pc-marrom);
   color: #fff;
   padding: 1.75rem 0;
-  font-size: clamp(0.9rem, 1.2vw, 1.1rem);
+  font-size: clamp(1rem, 1.35vw, 1.2rem);
 }
 
 .pc-footer-logo {

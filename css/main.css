@@ -1,5 +1,5 @@
 /* =====================================================
-   Prato Cheio - Início
+   Prato Cheio - Início (versão com tamanhos reduzidos)
    O posicionamento é feito pelo Bootstrap (grid, navbar, dropdown).
    Este arquivo define só as cores, fontes e o acabamento visual.
    ===================================================== */
@@ -15,7 +15,7 @@
   --pc-verde-botao: #3E6F34;  /* botões */
   --pc-verde-busca: #2D7816;  /* botão da busca */
 
-  --pc-raio: 2rem;
+  --pc-raio: 1.5rem;          /* antes: 2rem */
 
   --bs-body-font-family: Mada, system-ui, sans-serif;
   --bs-body-bg: var(--pc-fundo);
@@ -32,7 +32,7 @@ body {
   font-family: "Material Icons Round";
   font-weight: normal;
   font-style: normal;
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   line-height: 1;
   letter-spacing: normal;
   text-transform: none;
@@ -49,30 +49,27 @@ body {
    MENU
    ===================================================== */
 .pc-navbar {
-  padding-top: 1rem;
-  padding-bottom: 1rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
 }
 
-/* O arquivo do logo tem 1px escuro na primeira linha (resíduo da exportação):
-   o clip-path recorta essa linha. O ícone tem margem em volta, então é
-   exibido maior e com margem negativa para não aumentar a altura do menu. */
 .navbar-brand img {
-  width: 5rem;
-  height: 5rem;
-  margin: -0.75rem 0 -0.75rem -0.5rem;
+  width: 3.5rem;
+  height: 3.5rem;
+  margin: -0.5rem 0 -0.5rem -0.35rem;
   clip-path: inset(1.5% 0 0 0);
 }
 
 .pc-brand-text {
   font-family: "Londrina Solid", sans-serif;
-  font-size: clamp(2rem, 3.2vw, 3rem);
+  font-size: clamp(1.6rem, 2.4vw, 2.25rem);
   line-height: 1;
   color: var(--pc-verde-marca);
 }
 
 .pc-navbar .nav-link {
   font-family: "Londrina Solid", sans-serif;
-  font-size: clamp(1.4rem, 2vw, 2rem);
+  font-size: clamp(1.15rem, 1.5vw, 1.5rem);
   color: var(--pc-marrom-menu);
 }
 
@@ -95,18 +92,18 @@ body {
 .pc-dropdown {
   background-color: var(--pc-card-bg);
   border: 1px solid var(--pc-marrom);
-  border-radius: 1rem;
-  padding: 0.5rem;
+  border-radius: 0.75rem;
+  padding: 0.4rem;
   --bs-dropdown-link-hover-bg: #E3F1DD;
   --bs-dropdown-link-active-bg: var(--pc-verde-botao);
 }
 
 .pc-dropdown .dropdown-item {
   font-family: "Londrina Solid", sans-serif;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   color: var(--pc-marrom-menu);
-  border-radius: 0.6rem;
-  padding: 0.35rem 1rem;
+  border-radius: 0.5rem;
+  padding: 0.3rem 0.85rem;
 }
 
 .pc-dropdown .dropdown-item:hover,
@@ -124,7 +121,7 @@ body {
 
 @media (min-width: 1200px) {
   .pc-search {
-    width: 18rem;
+    width: 15rem;
   }
 }
 
@@ -132,9 +129,9 @@ body {
   background-color: var(--pc-card-bg);
   border: 1px solid var(--pc-marrom);
   border-radius: 50rem;
-  height: 3rem;
-  padding-left: 1.25rem;
-  padding-right: 3.5rem;
+  height: 2.5rem;
+  padding-left: 1rem;
+  padding-right: 3rem;
 }
 
 .pc-search .form-control:focus {
@@ -145,8 +142,8 @@ body {
 .pc-search-btn {
   position: absolute;
   right: 0;
-  width: 3.4rem;
-  height: 3.4rem;
+  width: 2.75rem;
+  height: 2.75rem;
   border: 0;
   border-radius: 50%;
   background-color: var(--pc-verde-busca);
@@ -154,7 +151,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  overflow: hidden; /* se a fonte de ícones não carregar, o texto não vaza do círculo */
+  overflow: hidden;
 }
 
 .pc-search-btn:hover {
@@ -167,7 +164,7 @@ body {
 }
 
 .pc-search-btn .material-icons-round {
-  font-size: 2rem;
+  font-size: 1.6rem;
 }
 
 /* =====================================================
@@ -175,7 +172,7 @@ body {
    ===================================================== */
 .pc-hero {
   position: relative;
-  height: clamp(220px, 33vw, 478px);
+  height: clamp(170px, 24vw, 340px);
   overflow: hidden;
   display: flex;
   align-items: center;
@@ -197,7 +194,7 @@ body {
   text-align: center;
   font-family: "Lilita One", sans-serif;
   font-weight: normal;
-  font-size: clamp(2.8rem, 9vw, 8rem);
+  font-size: clamp(2.2rem, 6.5vw, 5.5rem);
   line-height: 1;
   color: #fff;
   text-shadow: 0 2px 12px rgba(0, 0, 0, 0.55);
@@ -207,25 +204,25 @@ body {
    SEÇÕES / CARDS
    ===================================================== */
 .pc-sections {
-  padding-top: 3rem;
-  padding-bottom: 4rem;
+  padding-top: 2rem;
+  padding-bottom: 3rem;
 }
 
 .pc-section + .pc-section {
-  margin-top: 3.5rem;
+  margin-top: 2.5rem;
 }
 
 .pc-section-head {
   display: flex;
   align-items: center;
-  gap: 1rem;
-  margin-bottom: 1rem;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
   padding-left: 0.5rem;
 }
 
 .pc-section-head img {
-  width: 4rem;
-  height: 4rem;
+  width: 3rem;
+  height: 3rem;
   object-fit: contain;
 }
 
@@ -233,7 +230,7 @@ body {
   margin: 0;
   font-family: "Londrina Solid", sans-serif;
   font-weight: normal;
-  font-size: clamp(2.2rem, 4.4vw, 4rem);
+  font-size: clamp(1.8rem, 3.2vw, 2.8rem);
   line-height: 1;
   color: var(--pc-verde-titulo);
 }
@@ -242,7 +239,7 @@ body {
   background-color: var(--pc-card-bg);
   border: 1px solid var(--pc-marrom);
   border-radius: var(--pc-raio);
-  padding: clamp(1rem, 2.5vw, 2rem);
+  padding: clamp(0.875rem, 2vw, 1.5rem);
 }
 
 .pc-card-img {
@@ -255,24 +252,24 @@ body {
 }
 
 .pc-card-text {
-  font-size: clamp(1.05rem, 1.7vw, 1.6rem);
+  font-size: clamp(1rem, 1.3vw, 1.2rem);
   line-height: 1.4;
   color: #000;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
 }
 
 /* ---------- botão ---------- */
 .pc-btn {
   display: inline-flex;
   align-items: center;
-  gap: 0.75rem;
+  gap: 0.5rem;
   background-color: var(--pc-verde-botao);
   color: #fff;
   font-family: "Encode Sans Expanded", sans-serif;
-  font-size: clamp(1rem, 1.6vw, 1.5rem);
+  font-size: clamp(0.95rem, 1.2vw, 1.15rem);
   border: 0;
   border-radius: 50rem;
-  padding: 0.7rem 1.75rem;
+  padding: 0.55rem 1.4rem;
 }
 
 .pc-btn:hover,
@@ -291,12 +288,12 @@ body {
 .pc-footer {
   background-color: var(--pc-marrom);
   color: #fff;
-  padding: 2.5rem 0;
-  font-size: clamp(1rem, 1.5vw, 1.4rem);
+  padding: 1.75rem 0;
+  font-size: clamp(0.9rem, 1.2vw, 1.1rem);
 }
 
 .pc-footer-logo {
-  width: clamp(110px, 14vw, 180px);
+  width: clamp(90px, 10vw, 130px);
   height: auto;
-  clip-path: inset(1.5% 0 0 0); /* mesma linha escura do arquivo original */
+  clip-path: inset(1.5% 0 0 0); 
 }

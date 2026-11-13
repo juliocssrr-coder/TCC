@@ -252,10 +252,10 @@ body {
 }
 
 .pc-card-text {
-  font-size: clamp(1rem, 1.3vw, 1.2rem);
-  line-height: 1.4;
+  font-size: clamp(1.5rem, 1.7vw, 1.4rem);
+  line-height: 1.8;
   color: #000;
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
 }
 
 /* ---------- botão ---------- */
